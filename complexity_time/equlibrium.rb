@@ -14,6 +14,7 @@ class EquilibriumProblem
 
       difference = current_difference if difference > current_difference
     end
+    
     difference
   end
 end
