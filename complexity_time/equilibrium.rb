@@ -4,7 +4,7 @@
 class EquilibriumProblem
   def self.solution(a)
     left_elements_sum = a[0]
-    right_elements_sum = a[1, a.length - 1].sum
+    right_elements_sum = a.sum - a[0]
     difference = (left_elements_sum - right_elements_sum).abs
 
     (1..a.length - 2).each do |i|
@@ -14,6 +14,7 @@ class EquilibriumProblem
 
       difference = current_difference if difference > current_difference
     end
+
     difference
   end
 end
