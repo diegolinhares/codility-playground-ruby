@@ -7,7 +7,7 @@ class MaxCounters
     a.each do |instruction|
       if instruction > n
         max_counter = counters.max
-        counters.map! { max_counter }
+        counters = Array.new(n, max_counter)
       else
         counters[instruction - 1] += 1
       end
