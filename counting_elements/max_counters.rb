@@ -3,21 +3,24 @@
 class MaxCounters
   def self.solution(n, a)
     counters = Array.new(n, 0)
+    start = 0
+    max_counter = 0
 
-    until a.empty?
-      instruction = a.first
-
+    a.each do |instruction|
       if instruction > n
-        max_counter = counters.max
-        counters = Array.new(n, max_counter)
+        start = max_counter
+      elsif counters[instruction - 1] < start
+        counters[instruction - 1] = start + 1
       else
         counters[instruction - 1] += 1
       end
 
-      a.shift
+      if instruction <= n && counters[instruction - 1] > max_counter
+        max_counter = counters[instruction - 1]
+      end
     end
 
-    counters.inspect
+    counters.map { |x| x < start ? start : x }.inspect
   end
 end
 
