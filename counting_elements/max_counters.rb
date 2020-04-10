@@ -4,16 +4,20 @@ class MaxCounters
   def self.solution(n, a)
     counters = Array.new(n, 0)
 
-    a.each do |instruction|
+    until a.empty?
+      instruction = a.first
+
       if instruction > n
         max_counter = counters.max
         counters = Array.new(n, max_counter)
       else
         counters[instruction - 1] += 1
       end
+
+      a.shift
     end
 
-    counters
+    counters.inspect
   end
 end
 
